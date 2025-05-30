@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { PlanetaEntity } from './planeta/entities/planeta.entity';
 import { planetaModule } from './planeta/planeta.module';
+import { StarSystemsEntity } from './startsystems/entities/starsystem.entity';
+import { StarSystemsModule } from './startsystems/starsystems.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -17,10 +19,11 @@ import { planetaModule } from './planeta/planeta.module';
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    entities: [PlanetaEntity],
+    entities: [PlanetaEntity,StarSystemsEntity],
     synchronize:true,
   }),
   planetaModule,
+  StarSystemsModule,
 ],
   
   controllers: [AppController],
