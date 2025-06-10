@@ -1,5 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { PlanetaEntity } from '../../planeta/entities/planeta.entity';
 
 @Entity({ name: 'tb_star_system' })
 export class StarSystemsEntity {
@@ -11,5 +12,7 @@ export class StarSystemsEntity {
   @Column({ type: 'text', nullable: true })
   descrição: string;
 
+  @OneToMany(() => PlanetaEntity, planeta => planeta.sistemaSolar)
+  planetas: PlanetaEntity[];
   // fazer relacionamento com planeta para listar todos os planetas relacionados ao Sistemas Estelares
 }

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { StarSystemsEntity } from '../../startsystems/entities/starsystem.entity';
 
 @Entity({ name: 'tb_planetas' })
 export class PlanetaEntity {
@@ -12,4 +13,6 @@ export class PlanetaEntity {
   terreno: string;
   @Column({ nullable: false, type: 'decimal' })
   populacao: number;
+  @ManyToOne(() => StarSystemsEntity, sistema => sistema.planetas, { onDelete: 'CASCADE' })
+  sistemaSolar: StarSystemsEntity;
 }

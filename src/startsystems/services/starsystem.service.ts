@@ -11,7 +11,11 @@ export class StarSystemsService {
   ) {}
 
   async findAll(): Promise<StarSystemsEntity[]> {
-    return await this.starSystemsRepository.find();
+    return await this.starSystemsRepository.find({
+      relations: {
+        planetas: true,
+      }
+    });
   }
 
   async findById(id: number): Promise<StarSystemsEntity> {
@@ -19,6 +23,9 @@ export class StarSystemsService {
       where: {
         id,
       },
+       relations: {
+        planetas: true,
+      }
     });
     if (!buscaSistemaSolar) {
       throw new HttpException(
@@ -34,6 +41,9 @@ export class StarSystemsService {
       where: {
         nome: ILike(`%${nome}%`),
       },
+       relations: {
+        planetas: true,
+      }
     });
     if (buscaSystems.length === 0) {
       throw new HttpException('Sistema Solar não encontrado!', HttpStatus.NOT_FOUND);

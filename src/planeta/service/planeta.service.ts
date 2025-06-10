@@ -11,13 +11,20 @@ export class planetaService {
   ) {}
 
   async findAll(): Promise<PlanetaEntity[]> {
-    return await this.planetaRepository.find();
+    return await this.planetaRepository.find({
+       relations: {
+        sistemaSolar: true,
+      }
+    });
   }
 
   async findById(id: number): Promise<PlanetaEntity> {
     const buscaPlaneta = await this.planetaRepository.findOne({
       where: {
         id,
+      },
+        relations: {
+        sistemaSolar: true,
       },
     });
     if (!buscaPlaneta) {
@@ -30,6 +37,9 @@ export class planetaService {
     const buscaPlanetaName = await this.planetaRepository.find({
       where: {
         nome: ILike(`%${nome}%`),
+      },
+        relations: {
+        sistemaSolar: true,
       },
     });
     if (buscaPlanetaName.length === 0) {
