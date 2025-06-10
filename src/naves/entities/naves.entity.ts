@@ -1,19 +1,25 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { ApiProperty } from '@nestjs/swagger';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({name: 'tb_naves'})
+@Entity({ name: 'tb_naves' })
 export class NavesEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  @ApiProperty()
+  id: number;
 
-    @Column({nullable: false, length: 255})
-    nome: string;
+  @Column({ nullable: false, length: 255 })
+  @ApiProperty()
+  nome: string;
 
-    @Column({nullable:false, length: 300})
-    modelo: string;
+  @Column({ nullable: false, length: 300 })
+  @ApiProperty()
+  modelo: string;
 
-    @Column({nullable:false, length: 300})
-    fabricante: string;
-    
-    @Column({nullable:false,})
-    capassidadePassageiros: number;
+  @Column({ nullable: false, length: 300 })
+  @ApiProperty()
+  fabricante: string;
+
+  @ApiProperty()
+  @Column({ nullable: false })
+  capassidadePassageiros: number;
 }

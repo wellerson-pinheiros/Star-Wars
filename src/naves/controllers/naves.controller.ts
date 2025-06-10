@@ -2,7 +2,10 @@ import { Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Body,
 import { NavesEntity } from "../entities/naves.entity";
 import { NavesService } from "../services/naves.service";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
+@ApiTags('Naves')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller("/naves")
 export class NavesController{

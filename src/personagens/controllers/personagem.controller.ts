@@ -2,7 +2,10 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { PersonagensEntity } from "../entities/personagens.entity";
 import { PersonagenService } from "../services/personagens.service";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
+@ApiTags('Personagens')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller("/personagens")
 export class PersonagemController{

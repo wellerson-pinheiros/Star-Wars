@@ -14,7 +14,10 @@ import {
 import { planetaService } from '../service/planeta.service';
 import { PlanetaEntity } from '../entities/planeta.entity';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Planetas')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller('/planetas')
 export class PlanetaController {

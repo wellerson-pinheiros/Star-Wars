@@ -14,9 +14,12 @@ import {
 import { StarSystemsService } from '../services/starsystem.service';
 import { StarSystemsEntity } from '../entities/starsystem.entity';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('StarSystem')
 @UseGuards(JwtAuthGuard)
 @Controller('/systems')
+@ApiBearerAuth()
 export class StarSystemController {
   constructor(private readonly starSystemsService: StarSystemsService) {}
 
