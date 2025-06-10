@@ -21,6 +21,7 @@ import { DevService } from './data/services/dev.service';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // permite acesso ao process.env em toda a aplicação
+      envFilePath: '.env'
     }),
     TypeOrmModule.forRootAsync({
       useClass: ProdService,
