@@ -9,10 +9,13 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { planetaService } from '../service/planeta.service';
 import { PlanetaEntity } from '../entities/planeta.entity';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('/planetas')
 export class PlanetaController {
   constructor(private readonly planetaService: planetaService) {}

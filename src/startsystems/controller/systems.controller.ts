@@ -9,10 +9,13 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { StarSystemsService } from '../services/starsystem.service';
 import { StarSystemsEntity } from '../entities/starsystem.entity';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('/systems')
 export class StarSystemController {
   constructor(private readonly starSystemsService: StarSystemsService) {}
