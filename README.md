@@ -1,98 +1,150 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🌌 API Star Wars
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### Projeto desenvolvido para a comunidade **Front End Fusion**, com foco em aprendizado e colaboração prática usando tecnologias modernas do ecossistema JavaScript/TypeScript.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📖 Introdução
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Esta é uma API RESTful construída com **NestJS** que simula um sistema de dados do universo Star Wars. O objetivo é oferecer uma base sólida para consumir dados de planetas, personagens, sistemas solares e naves, permitindo práticas reais com back-end moderno, autenticação JWT, banco de dados relacional (PostgreSQL) e boas práticas de arquitetura.
 
-## Project setup
+Esta API faz parte de um desafio técnico da **comunidade Front End Fusion**, onde os participantes desenvolvem aplicações em conjunto com foco em aprendizado colaborativo.
 
-```bash
-$ npm install
-```
+---
 
-## Compile and run the project
+## 🧪 Funcionalidades
 
-```bash
-# development
-$ npm run start
+- ✅ Autenticação de usuários com JWT  
+- 🪐 Cadastro e listagem de planetas  
+- 🌌 Cadastro de sistemas solares com relação 1:N (um sistema pode ter vários planetas)  
+- 👨‍🚀 Cadastro e listagem de personagens  
+- 🚀 Cadastro e listagem de naves  
+- 🔐 Rotas protegidas para usuários autenticados  
 
-# watch mode
-$ npm run start:dev
+---
 
-# production mode
-$ npm run start:prod
-```
+## 🛠️ Tecnologias utilizadas
 
-## Run tests
+| Tecnologia     | Função                                     |
+|----------------|--------------------------------------------|
+| **NestJS**     | Framework backend com suporte a TypeScript |
+| **TypeORM**    | ORM para interação com o banco PostgreSQL  |
+| **PostgreSQL** | Banco de dados relacional                  |
+| **JWT**        | Autenticação segura via token              |
+| **dotenv**     | Gerenciamento de variáveis de ambiente     |
 
-```bash
-# unit tests
-$ npm run test
+---
 
-# e2e tests
-$ npm run test:e2e
+## 📁 Estrutura de Pastas
 
-# test coverage
-$ npm run test:cov
-```
+src/
+├── auth/ # Módulo de autenticação <br>
+├── planetas/ # CRUD de planetas<br>
+├── sistemas-solares/ # CRUD de sistemas solares<br>
+├── personagens/ # CRUD de personagens<br>
+├── naves/ # CRUD de naves espaciais<br>
+├── user/ # Cadastro e autenticação de usuários<br>
+├── database/ # Configurações do banco de dados<br>
+├── main.ts # Ponto de entrada da aplicação
+<br>
+## Instale as Dependências
 
-## Deployment
+npm install
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## Autenticação
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Esta API utiliza o padrão JWT (JSON Web Token) para autenticação, garantindo segurança e facilidade no controle de acesso às rotas protegidas.
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+Como funciona?
+Login:
+O usuário envia suas credenciais (e-mail e senha) para a rota /auth/login.
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Geração do Token:
 
-## Resources
+Se as credenciais forem válidas, a API gera um token JWT contendo as informações do usuário (payload), assinado com a chave secreta definida em JWT_SECRET.
 
-Check out a few resources that may come in handy when working with NestJS:
+Envio do Token:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+O token é retornado na resposta do login e deve ser armazenado pelo cliente (frontend/mobile), geralmente em armazenamento local seguro (ex: localStorage ou httpOnly cookies).
 
-## Support
+Acesso às rotas protegidas:
+Para acessar rotas que exigem autenticação, o cliente deve enviar o token no header da requisição usando o formato:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Authorization: Bearer <seu_token_jwt>
 
-## Stay in touch
+Validação do Token:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+O backend valida o token em cada requisição às rotas protegidas, garantindo que o usuário está autenticado e autorizado.
 
-## License
+## 📚 Documentação da API com Swagger
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Para facilitar o entendimento e o uso da API, o projeto conta com uma documentação automática gerada pelo Swagger, que descreve todos os endpoints, parâmetros, modelos de dados e respostas possíveis.
+
+Como acessar?
+Depois de rodar a aplicação (npm run start:dev), você pode acessar a documentação Swagger pelo navegador no endereço:
+
+
+http://localhost:3000/api
+
+Lá você verá uma interface visual onde é possível:
+
+Visualizar todos os recursos disponíveis da API
+
+Testar as rotas diretamente pelo navegador (executar requisições)
+
+Conferir os parâmetros esperados e os exemplos de respostas
+
+Obter descrições claras de cada endpoint e suas funcionalidades
+
+após fazer o clone do répositorio você podera acessar a documentação pelo link http://localhost:4000/api
+
+Benefícios do Swagger
+Facilita o desenvolvimento frontend e testes da API
+
+Serve como documentação oficial para desenvolvedores que irão consumir a API
+
+Ajuda a manter o contrato da API atualizado e claro durante o desenvolvimento
+
+## 🤝 Contribuições
+Contribuições são sempre bem-vindas! Este projeto foi criado como parte de um desafio da comunidade Front End Fusion, mas você pode ajudar a evoluí-lo ainda mais.<br>
+
+💬 Adoraria trocar ideias com cada um de vocês!
+Se tiver sugestões, feedbacks construtivos ou quiser apenas conversar sobre o projeto, sinta-se à vontade para entrar em contato. Toda troca de conhecimento é bem-vinda e valorizada!
+
+<strong>Como contribuir ? </strong><br>
+ 1 - Fork o repositório
+
+ 2 - Crie uma branch com a sua feature ou correção :<br>
+ git checkout -b minha-nova-feature
+
+ 3 - Faça seus commits com mensagens claras
+ 
+ 4 - Envie o código para seu fork:<br>
+ git push origin minha-nova-feature
+
+ 5 - Abra um Pull Request com uma descrição detalhada da sua contribuição
+
+## 📝 Licença
+Este projeto está licenciado sob a Licença MIT - veja os detalhes abaixo:<br>
+
+<strong>MIT License.
+
+ <strong>Copyright (c) 2025 Wellerson
+
+""Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.""
