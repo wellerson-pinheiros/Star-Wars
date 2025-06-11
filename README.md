@@ -84,7 +84,7 @@ Como acessar?
 Depois de rodar a aplicação (npm run start:dev), você pode acessar a documentação Swagger pelo navegador no endereço:
 
 
-http://localhost:3000/api
+
 
 Lá você verá uma interface visual onde é possível:
 
@@ -104,6 +104,10 @@ Facilita o desenvolvimento frontend e testes da API
 Serve como documentação oficial para desenvolvedores que irão consumir a API
 
 Ajuda a manter o contrato da API atualizado e claro durante o desenvolvimento
+
+link de acesso a API: <br>
+
+https://star-wars-1-addk.onrender.com/swagger
 
 ## 🤝 Contribuições
 Contribuições são sempre bem-vindas! Este projeto foi criado como parte de um desafio da comunidade Front End Fusion, mas você pode ajudar a evoluí-lo ainda mais.<br>
